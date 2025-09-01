@@ -42,7 +42,7 @@ To switch to MySQL:
 * Create a database in MySQL Workbench (e.g., number_verification).
 
 * Create a .env file in the project root with the following variables:
-* 
+  
 ``` python
 # Create a .env file in root of the project folder and add the following environment variables
 DB_USER=YOUR_DB_USER
