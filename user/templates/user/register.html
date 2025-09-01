@@ -5,19 +5,21 @@
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-lg p-4 rounded-4" style="width: 400px;">
         <h3 class="text-center mb-4">Create Account</h3>
+
         {% if messages %}
         {% for message in messages %}
         {% if message.tags == "error" %}
         <div class="alert alert-danger" role="alert">
-            {{message}}
+            {{ message }}
         </div>
         {% else %}
-        <div class="alert alert-{{message.tags}}" role="alert">
-            {{message}}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
         </div>
         {% endif %}
         {% endfor %}
         {% endif %}
+
         <form method="post" novalidate>
             {% csrf_token %}
             {{ form|crispy }}
@@ -25,6 +27,7 @@
                 Register
             </button>
         </form>
+
         <div class="text-center mt-3">
             <small class="text-muted">
                 Already have an account?

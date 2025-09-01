@@ -1,0 +1,56 @@
+{% extends "user/base.html" %}
+{% block title %}Global Armstrong Numbers{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">🌍 Global Armstrong Numbers</h2>
+
+        <!-- Auth Buttons under title -->
+        <div class="d-flex justify-content-center gap-2 mt-3">
+            <a href="{% url 'login' %}" class="btn btn-outline-primary rounded-3 px-4">
+                🔑 Login
+            </a>
+            <a href="{% url 'register' %}" class="btn btn-primary rounded-3 px-4">
+                📝 Register
+            </a>
+        </div>
+
+        <p class="text-muted mt-3">See Armstrong numbers verified by all users.</p>
+        <span class="badge bg-dark fs-6 px-3 py-2">👥 Total Users: {{ data.total_users }}</span>
+    </div>
+
+    <!-- Users List -->
+    <div class="row g-4 mt-4">
+        {% for user in data.users %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm border-0 rounded-3 h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary fw-bold">
+                        📧 {{ user.email }}
+                    </h5>
+                    <hr>
+                    {% if user.armstrong_numbers %}
+                    <ul class="list-group list-group-flush">
+                        {% for num in user.armstrong_numbers %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="fw-semibold">{{ num.number }}</span>
+                            <span class="badge bg-success rounded-pill">Armstrong</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="text-muted fst-italic">No numbers yet</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <p class="text-muted">No users found.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
