@@ -54,6 +54,7 @@ DB_PASS=YOU_DB_PASS
 Run migrations:
 
 ``` bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
