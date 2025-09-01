@@ -36,10 +36,15 @@ pip install -r requirements.txt
 
 ### 4. Configure Database
 
-By default, **SQLite** is used. To switch to **MYSQL**
+By default, the project uses SQLite.
+To switch to MySQL:
 
+* Create a database in MySQL Workbench (e.g., number_verification).
+
+* Create a .env file in the project root with the following variables:
+* 
 ``` python
-# Create a .env file and add the following environment variables
+# Create a .env file in root of the project folder and add the following environment variables
 DB_USER=YOUR_DB_USER
 DB_NAME=YOUR_DB_NAME
 DB_HOST=YOUR_DB_HOST
