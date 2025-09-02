@@ -72,6 +72,8 @@ You can test the APIs by downloading postman locally in your system.
 
 # Postman collection link: https://www.postman.com/workspace/Personal-Workspace~b29c7e43-becb-4636-998a-4f1095d10ea7/collection/48096872-89e6e07b-4650-4cea-87bd-a03a33ae071c?action=share&source=copy-link&creator=48096872
 
+(Note): Before hitting the apis make sure you activate "Number Verification Env" in the postman
+
 ## 🌐 API Endpoints
 
   -------------------------------------------------------------------------
