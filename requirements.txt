@@ -4,3 +4,4 @@ djangorestframework-simplejwt
 mysqlclient
 python-dotenv
 requests
+crispy-bootstrap5
