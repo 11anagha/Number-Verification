@@ -62,8 +62,8 @@ The app will be available at 👉 **http://127.0.0.1:8000/**
 
 ## 📬 Postman Collection
 
-You can test the APIs using **Postman**:  
-🔗 [Postman Collection Link](https://elements.getpostman.com/redirect?entityId=48096872-89e6e07b-4650-4cea-87bd-a03a33ae071c&entityType=collection)
+You can test the APIs using by download **Postman** app locally on your system:  
+🔗 [Postman Collection Reference Link](https://elements.getpostman.com/redirect?entityId=48096872-89e6e07b-4650-4cea-87bd-a03a33ae071c&entityType=collection)
 
 > ⚠️ Before hitting the APIs, make sure you activate **"Number Verification Env"** in Postman.
 
@@ -85,7 +85,7 @@ You can test the APIs using **Postman**:
 
 ### 🔹 Register
 ```http
-POST /api/register/
+POST http://127.0.0.1:8000/api/register/
 {
   "email": "user@example.com",
   "password": "StrongPass123!"
@@ -94,7 +94,7 @@ POST /api/register/
 
 ### 🔹 Login
 ```http
-POST /api/login/
+POST http://127.0.0.1:8000/api/login/
 {
   "email": "user@example.com",
   "password": "StrongPass123!"
@@ -111,24 +111,22 @@ POST /api/login/
 
 ### 🔹 Verify Number
 ```http
-POST /api/verify-number/
+POST http://127.0.0.1:8000/api/verify-number/
 Authorization: Bearer <access_token>
 
 {
   "number": 153,
-  "save": true
+  "save": true        /** set save == true for saving armstrong number to the database **/
 }
 ```
 
 ### 🔹 Get User's Numbers
 ```http
-GET /api/get-numbers/
+GET http://127.0.0.1:8000/api/get-numbers/
 Authorization: Bearer <access_token>
 ```
 
 ### 🔹 Global Armstrong Numbers
 ```http
-GET /api/global-armstrong-numbers/
+GET http://127.0.0.1:8000/api/global-armstrong-numbers/
 ```
-
----
