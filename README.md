@@ -70,11 +70,7 @@ The app will be available at:\
 
 You can test the APIs by downloading postman locally in your system.
 
-```python
-Postman collection link:
-
-/workspace/Personal-Workspace~b29c7e43-becb-4636-998a-4f1095d10ea7/collection/48096872-89e6e07b-4650-4cea-87bd-a03a33ae071c?action=share&creator=48096872&active-environment=48096872-d857bcc7-9ad9-4b56-9fa3-65f9717fb2cc
-```
+# Postman collection link: https://www.postman.com/workspace/Personal-Workspace~b29c7e43-becb-4636-998a-4f1095d10ea7/collection/48096872-89e6e07b-4650-4cea-87bd-a03a33ae071c?action=share&source=copy-link&creator=48096872
 
 ## 🌐 API Endpoints
 
