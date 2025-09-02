@@ -67,57 +67,29 @@ python manage.py runserver
 The app will be available at:\
 👉 `http://127.0.0.1:8000/`
 
-------------------------------------------------------------------------
 
-## 🗄️ Database Schema Design
+You can test the APIs by downloading postman locally in your system.
 
-### Models
+```python
+Postman collection link:
 
-1.  **CustomUser**
-    -   Extends Django's AbstractUser or AbstractBaseUser.
-    -   Fields: `id`, `email`, `password`, `is_active`, `date_joined`,
-        etc.
-2.  **ArmstrongNumber**
-    -   Stores Armstrong numbers verified by users.\
-    -   Fields:
-        -   `id`: Primary key\
-        -   `user`: ForeignKey → `CustomUser`\
-        -   `number`: Integer (unique per user)\
-        -   `created_at`: Timestamp
-
-### Relationships
-
--   **One-to-Many**: Each `CustomUser` can have multiple saved
-    `ArmstrongNumber` records.
-
-------------------------------------------------------------------------
+/workspace/Personal-Workspace~b29c7e43-becb-4636-998a-4f1095d10ea7/collection/48096872-89e6e07b-4650-4cea-87bd-a03a33ae071c?action=share&creator=48096872&active-environment=48096872-d857bcc7-9ad9-4b56-9fa3-65f9717fb2cc
+```
 
 ## 🌐 API Endpoints
 
   -------------------------------------------------------------------------
   Endpoint                           Method   Auth Required   Description
   ---------------------------------- -------- --------------- -------------
-  `/api/register/`                   POST     ❌ No           Register a
-                                                              new user
+  `/api/register/`                   POST     ❌ No           Register a new user
 
-  `/api/login/`                      POST     ❌ No           Login and get
-                                                              JWT tokens
+  `/api/login/`                      POST     ❌ No           Login and get JWT tokens
 
-  `/api/verify-number/`              POST     ✅ Yes          Verify if a
-                                                              number is
-                                                              Armstrong.
-                                                              Optionally
-                                                              save it
+  `/api/verify-number/`              POST     ✅ Yes          Verify if a number is Armstrong. Optionally save it
 
-  `/api/verify-number/`              GET      ✅ Yes          Get user's
-                                                              saved
-                                                              Armstrong
-                                                              numbers
+  `/api/get-numbers/`                GET      ✅ Yes          Get user's saved Armstrong numbers
 
-  `/api/global-armstrong-numbers/`   GET      ❌ No           Get all users
-                                                              with their
-                                                              Armstrong
-                                                              numbers
+  `/api/global-armstrong-numbers/`   GET      ❌ No           Get all users with their Armstrong numbers
   -------------------------------------------------------------------------
 
 ### Example Requests
@@ -168,57 +140,3 @@ Authorization: Bearer <access_token>
 ``` http
 GET /api/global-armstrong-numbers/
 ```
-
-------------------------------------------------------------------------
-
-## ⚡ Performance Optimization Approaches
-
-1.  **Efficient Armstrong Check**
-    -   Armstrong check runs in O(d), where d = number of digits.\
-    -   Implemented with `sum(int(d) ** power for d in digits)` to avoid
-        redundant computations.
-2.  **Database Query Optimization**
-    -   Used `.values_list()` in `VerifyNumberAPIView.get()` to fetch
-        only necessary fields.\
-    -   Used `prefetch_related('armstrong_numbers')` in global view to
-        avoid N+1 query problem.
-3.  **JWT for Stateless Auth**
-    -   Eliminates costly session lookups and scales well with
-        distributed environments.
-4.  **Error Handling & Timeouts**
-    -   Requests to API endpoints include `timeout=5` to prevent hanging
-        connections.
-
-------------------------------------------------------------------------
-
-## 🧩 Challenges & Solutions
-
-### 1. **JWT Integration**
-
--   **Challenge**: Managing secure authentication between API and
-    frontend views.\
--   **Solution**: Used `djangorestframework-simplejwt` for JWT handling.
-    Tokens stored in Django session for frontend usage.
-
-### 2. **Avoiding Duplicate Saves**
-
--   **Challenge**: Preventing duplicate Armstrong numbers for the same
-    user.\
--   **Solution**: Applied `unique_together` constraint on
-    `(user, number)` in `ArmstrongNumber`.
-
-### 3. **API ↔ Form Handling**
-
--   **Challenge**: Bridging Django forms with DRF APIs.\
--   **Solution**: Used `requests` library inside normal views
-    (`register_page`, `login_page`, `verify_number`) to call DRF
-    endpoints, keeping separation of concerns.
-
-### 4. **Global Data Retrieval**
-
--   **Challenge**: N+1 queries when fetching users with their Armstrong
-    numbers.\
--   **Solution**: Used `prefetch_related` with serializer to minimize
-    queries.
-
-------------------------------------------------------------------------
