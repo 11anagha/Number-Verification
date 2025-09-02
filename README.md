@@ -12,6 +12,8 @@ A **Django + Django REST Framework** application that allows users to:
 
 ## 🛠️ Setup & Installation
 
+### Open Git Bash
+
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/11anagha/Number-Verification.git
@@ -21,8 +23,7 @@ cd Number-Verification
 ### 2. Create Virtual Environment
 ```bash
 python -m venv venv
-source venv/bin/activate   # On Linux/Mac
-source venv\Scripts\activate      # On Windows
+source venv/scripts/activate
 ```
 
 ### 3. Install Dependencies
