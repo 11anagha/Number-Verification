@@ -22,7 +22,7 @@ cd Number-Verification
 ```bash
 python -m venv venv
 source venv/bin/activate   # On Linux/Mac
-venv\Scripts\activate      # On Windows
+sourve venv\Scripts\activate      # On Windows
 ```
 
 ### 3. Install Dependencies
